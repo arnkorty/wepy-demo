@@ -6,12 +6,12 @@
 
       <view class="userinfo">
         
-  <view class="filter _2a48a2f">
-    <image src="/images/filter.png" mode="aspectFill" bindtap="$filter$toggleShow" class="_2a48a2f"/>
+  <view class="filter _fdf05fa">
+    <image src="/images/filter.png" mode="aspectFill" bindtap="$Filter$toggleShow" class="_fdf05fa"/>
 
-    <view class="filter-selector {{ $filter$show ? '' : 'hidden' }} _2a48a2f" catchtap="$filter$toggleShow">
-      <view class="filter-lists _2a48a2f" catchtap="$filter$nothing">
-        <label  wx:for="{{ $filter$items }}" wx:key="{{ item.id }}" catchtap="$filter$handleFilter" class="_2a48a2f" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
+    <view class="filter-selector {{ $Filter$show ? '' : 'hidden' }} _fdf05fa" catchtap="$Filter$toggleShow">
+      <view class="filter-lists _fdf05fa" catchtap="$Filter$nothing">
+        <label  wx:for="{{ $Filter$items }}" wx:key="{{ item.id }}" catchtap="$Filter$handleFilter" class="_fdf05fa" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
       </view>
     </view>
   </view>
@@ -24,6 +24,22 @@
 
     <!-- 记录列表 -->
     <view class="record-lists">
-      
+      <block wx:for="{{ list }}" wx:for-index="index" wx:for-item="item" wx:key="recordid">
+        
+  <view class="record-list">
+    <view class="record-avatar">
+      <image src="{{item.photo}}" mode="aspectFill"/>
+    </view>
+    <view class="record-detail">
+      <view class="record-userinfo">fdsf</view>
+      <view class="record-disease-list"/>
+      <view class="record-text"/>
+      <view class="record-tool"/>
+      <view class="record-hug"/>
+      <view class="record-comments"/>
+    </view>
+  </view>
+
+      </block> 
     </view>
   </view>

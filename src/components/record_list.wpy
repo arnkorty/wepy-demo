@@ -1,0 +1,54 @@
+<style lang="less">
+  .record-list {
+    display: flex;
+    .record-avatar {
+      width: 180rpx;
+    }
+    .record-detail {
+      flex: 1;
+    }
+  }
+</style>
+<template>
+  <view class="record-list">
+    <view class="record-avatar">
+      <image src="{{item.photo}}" mode="aspectFill" />
+    </view>
+    <view class="record-detail">
+      <view class="record-userinfo">fdsf</view>
+      <view class="record-disease-list"></view>
+      <view class="record-text"></view>
+      <view class="record-tool"></view>
+      <view class="record-hug"></view>
+      <view class="record-comments"></view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class RecordList extends wepy.component {
+    props = {
+      item: {}
+    }
+
+    data = {
+      show: false
+    }
+
+    methods = {
+      toggleShow (e) {
+        console.log(e)
+        this.show = !this.show
+        console.log(this.show)
+      },
+      handleFilter (id) {
+        console.log(id)
+      },
+      nothing () {}
+    }
+    onLoad () {
+      console.log(this)
+      console.log('____________________')
+    }
+  }
+</script>

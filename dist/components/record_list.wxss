@@ -1,0 +1,1 @@
+.record-list{display:flex}.record-list .record-avatar{width:180rpx}.record-list .record-detail{flex:1}

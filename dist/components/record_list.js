@@ -19,22 +19,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Filter = function (_wepy$component) {
-  _inherits(Filter, _wepy$component);
+var RecordList = function (_wepy$component) {
+  _inherits(RecordList, _wepy$component);
 
-  function Filter() {
+  function RecordList() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, Filter);
+    _classCallCheck(this, RecordList);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Filter.__proto__ || Object.getPrototypeOf(Filter)).call.apply(_ref, [this].concat(args))), _this), _this.props = {
-      items: {}
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = RecordList.__proto__ || Object.getPrototypeOf(RecordList)).call.apply(_ref, [this].concat(args))), _this), _this.props = {
+      item: {}
     }, _this.data = {
       show: false
     }, _this.methods = {
@@ -50,7 +50,7 @@ var Filter = function (_wepy$component) {
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(Filter, [{
+  _createClass(RecordList, [{
     key: 'onLoad',
     value: function onLoad() {
       console.log(this);
@@ -58,8 +58,8 @@ var Filter = function (_wepy$component) {
     }
   }]);
 
-  return Filter;
+  return RecordList;
 }(_wepy2.default.component);
 
-exports.default = Filter;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpbHRlci5qcyJdLCJuYW1lcyI6WyJGaWx0ZXIiLCJwcm9wcyIsIml0ZW1zIiwiZGF0YSIsInNob3ciLCJtZXRob2RzIiwidG9nZ2xlU2hvdyIsImUiLCJjb25zb2xlIiwibG9nIiwiaGFuZGxlRmlsdGVyIiwiaWQiLCJub3RoaW5nIiwiY29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFDRTs7Ozs7Ozs7Ozs7O0lBQ3FCQSxNOzs7Ozs7Ozs7Ozs7OztzTEFDbkJDLEssR0FBUTtBQUNOQyxhQUFPO0FBREQsSyxRQUlSQyxJLEdBQU87QUFDTEMsWUFBTTtBQURELEssUUFJUEMsTyxHQUFVO0FBQ1JDLGdCQURRLHNCQUNJQyxDQURKLEVBQ087QUFDYkMsZ0JBQVFDLEdBQVIsQ0FBWUYsQ0FBWjtBQUNBLGFBQUtILElBQUwsR0FBWSxDQUFDLEtBQUtBLElBQWxCO0FBQ0FJLGdCQUFRQyxHQUFSLENBQVksS0FBS0wsSUFBakI7QUFDRCxPQUxPO0FBTVJNLGtCQU5RLHdCQU1NQyxFQU5OLEVBTVU7QUFDaEJILGdCQUFRQyxHQUFSLENBQVlFLEVBQVo7QUFDRCxPQVJPO0FBU1JDLGFBVFEscUJBU0csQ0FBRTtBQVRMLEs7Ozs7OzZCQVdBO0FBQ1JKLGNBQVFDLEdBQVIsQ0FBWSxJQUFaO0FBQ0FELGNBQVFDLEdBQVIsQ0FBWSxzQkFBWjtBQUNEOzs7O0VBdkJpQyxlQUFLSSxTOztrQkFBcEJiLE0iLCJmaWxlIjoiZmlsdGVyLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgaW1wb3J0IHdlcHkgZnJvbSAnd2VweSdcclxuICBleHBvcnQgZGVmYXVsdCBjbGFzcyBGaWx0ZXIgZXh0ZW5kcyB3ZXB5LmNvbXBvbmVudCB7XHJcbiAgICBwcm9wcyA9IHtcclxuICAgICAgaXRlbXM6IHt9XHJcbiAgICB9XHJcblxyXG4gICAgZGF0YSA9IHtcclxuICAgICAgc2hvdzogZmFsc2VcclxuICAgIH1cclxuXHJcbiAgICBtZXRob2RzID0ge1xyXG4gICAgICB0b2dnbGVTaG93IChlKSB7XHJcbiAgICAgICAgY29uc29sZS5sb2coZSlcclxuICAgICAgICB0aGlzLnNob3cgPSAhdGhpcy5zaG93XHJcbiAgICAgICAgY29uc29sZS5sb2codGhpcy5zaG93KVxyXG4gICAgICB9LFxyXG4gICAgICBoYW5kbGVGaWx0ZXIgKGlkKSB7XHJcbiAgICAgICAgY29uc29sZS5sb2coaWQpXHJcbiAgICAgIH0sXHJcbiAgICAgIG5vdGhpbmcgKCkge31cclxuICAgIH1cclxuICAgIG9uTG9hZCAoKSB7XHJcbiAgICAgIGNvbnNvbGUubG9nKHRoaXMpXHJcbiAgICAgIGNvbnNvbGUubG9nKCdfX19fX19fX19fX19fX19fX19fXycpXHJcbiAgICB9XHJcbiAgfVxyXG4iXX0=
+exports.default = RecordList;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY29yZF9saXN0LmpzIl0sIm5hbWVzIjpbIlJlY29yZExpc3QiLCJwcm9wcyIsIml0ZW0iLCJkYXRhIiwic2hvdyIsIm1ldGhvZHMiLCJ0b2dnbGVTaG93IiwiZSIsImNvbnNvbGUiLCJsb2ciLCJoYW5kbGVGaWx0ZXIiLCJpZCIsIm5vdGhpbmciLCJjb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUNFOzs7Ozs7Ozs7Ozs7SUFDcUJBLFU7Ozs7Ozs7Ozs7Ozs7OzhMQUNuQkMsSyxHQUFRO0FBQ05DLFlBQU07QUFEQSxLLFFBSVJDLEksR0FBTztBQUNMQyxZQUFNO0FBREQsSyxRQUlQQyxPLEdBQVU7QUFDUkMsZ0JBRFEsc0JBQ0lDLENBREosRUFDTztBQUNiQyxnQkFBUUMsR0FBUixDQUFZRixDQUFaO0FBQ0EsYUFBS0gsSUFBTCxHQUFZLENBQUMsS0FBS0EsSUFBbEI7QUFDQUksZ0JBQVFDLEdBQVIsQ0FBWSxLQUFLTCxJQUFqQjtBQUNELE9BTE87QUFNUk0sa0JBTlEsd0JBTU1DLEVBTk4sRUFNVTtBQUNoQkgsZ0JBQVFDLEdBQVIsQ0FBWUUsRUFBWjtBQUNELE9BUk87QUFTUkMsYUFUUSxxQkFTRyxDQUFFO0FBVEwsSzs7Ozs7NkJBV0E7QUFDUkosY0FBUUMsR0FBUixDQUFZLElBQVo7QUFDQUQsY0FBUUMsR0FBUixDQUFZLHNCQUFaO0FBQ0Q7Ozs7RUF2QnFDLGVBQUtJLFM7O2tCQUF4QmIsVSIsImZpbGUiOiJyZWNvcmRfbGlzdC5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4gIGltcG9ydCB3ZXB5IGZyb20gJ3dlcHknXHJcbiAgZXhwb3J0IGRlZmF1bHQgY2xhc3MgUmVjb3JkTGlzdCBleHRlbmRzIHdlcHkuY29tcG9uZW50IHtcclxuICAgIHByb3BzID0ge1xyXG4gICAgICBpdGVtOiB7fVxyXG4gICAgfVxyXG5cclxuICAgIGRhdGEgPSB7XHJcbiAgICAgIHNob3c6IGZhbHNlXHJcbiAgICB9XHJcblxyXG4gICAgbWV0aG9kcyA9IHtcclxuICAgICAgdG9nZ2xlU2hvdyAoZSkge1xyXG4gICAgICAgIGNvbnNvbGUubG9nKGUpXHJcbiAgICAgICAgdGhpcy5zaG93ID0gIXRoaXMuc2hvd1xyXG4gICAgICAgIGNvbnNvbGUubG9nKHRoaXMuc2hvdylcclxuICAgICAgfSxcclxuICAgICAgaGFuZGxlRmlsdGVyIChpZCkge1xyXG4gICAgICAgIGNvbnNvbGUubG9nKGlkKVxyXG4gICAgICB9LFxyXG4gICAgICBub3RoaW5nICgpIHt9XHJcbiAgICB9XHJcbiAgICBvbkxvYWQgKCkge1xyXG4gICAgICBjb25zb2xlLmxvZyh0aGlzKVxyXG4gICAgICBjb25zb2xlLmxvZygnX19fX19fX19fX19fX19fX19fX18nKVxyXG4gICAgfVxyXG4gIH1cclxuIl19

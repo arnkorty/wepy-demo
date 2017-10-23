@@ -21,7 +21,7 @@
  */
 
 var invariant = function(condition, format, a, b, c, d, e, f) {
-  if ("production" !== 'production') {
+  if (undefined !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
