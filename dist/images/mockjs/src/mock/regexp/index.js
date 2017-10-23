@@ -1,9 +1,0 @@
-'use strict';
-
-var Parser = require('./parser.js');
-var Handler = require('./handler.js');
-module.exports = {
-	Parser: Parser,
-	Handler: Handler
-};
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbIlBhcnNlciIsInJlcXVpcmUiLCJIYW5kbGVyIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJQSxTQUFTQyxRQUFRLFVBQVIsQ0FBYjtBQUNBLElBQUlDLFVBQVVELFFBQVEsV0FBUixDQUFkO0FBQ0FFLE9BQU9DLE9BQVAsR0FBaUI7QUFDaEJKLFNBQVFBLE1BRFE7QUFFaEJFLFVBQVNBO0FBRk8sQ0FBakIiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgUGFyc2VyID0gcmVxdWlyZSgnLi9wYXJzZXInKVxudmFyIEhhbmRsZXIgPSByZXF1aXJlKCcuL2hhbmRsZXInKVxubW9kdWxlLmV4cG9ydHMgPSB7XG5cdFBhcnNlcjogUGFyc2VyLFxuXHRIYW5kbGVyOiBIYW5kbGVyXG59Il19

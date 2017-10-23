@@ -1,0 +1,59 @@
+<style lang="less">
+    @manblue-color: #00AEFF;
+    @light-color: #aaa;
+    .record-tool{
+      font-size: 32rpx;
+      display: flex;
+      .tool-text{
+        flex: 1;
+        display: flex;
+        color: @light-color;
+        view {
+          margin-right: 40rpx;
+        }
+        .delete{
+          color: @manblue-color;
+        }
+      }
+      .comment-icon{
+        height: 30rpx;
+        width: 30rpx;
+      }
+    }
+</style>
+
+<template>
+  <view class="record-tool">
+    <view class='tool-text'>
+      <view class="timeago"> {{ timeago }} </view>
+      <view class="location"> {{ location }} </view>
+      <view wx:if="can_delete" class="delete">删除</view>
+    </view>
+    <view class="tool-btn">
+      <image src="/images/comment.png" class="comment-icon"/>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecordTool extends wepy.component {
+    props = {
+    }
+
+    data = {}
+
+    // 待完成
+    computed = {
+      timeago () {
+        return ~~(Math.random() * 60) + '分钟前'
+      },
+      location () {
+        return ['成都', '北京', '广州', '深圳', '上海'][~~(Math.random() * 7)]
+      },
+      can_delete () {
+        return [true, false][~~(Math.random() * 2)]
+      }
+    }
+  }
+</script>

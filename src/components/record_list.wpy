@@ -1,24 +1,116 @@
 <style lang="less">
+  @record-avatar-size: 100rpx;
+  @manblue-color: #00AEFF;
+  @femanred-color: #EA6F91;
   .record-list {
     display: flex;
+    padding: 30rpx;
     .record-avatar {
-      width: 180rpx;
+      width: @record-avatar-size;
+      image{
+        height: @record-avatar-size;
+        width: @record-avatar-size;
+      }
     }
     .record-detail {
       flex: 1;
+      display: flex;
+      padding-left: 18rpx;
+      flex-direction: column;
+      .record-userinfo {
+        display: flex;
+        flex: 1;
+        margin-bottom: 10rpx;
+        .info {
+          flex: 1;
+          & > view {
+            display:flex
+          }
+          .name {
+            margin-right: 30rpx;
+            color: @manblue-color;
+          }
+          .age {
+            font-size: 28rpx;
+          }
+          .disease {
+            font-size: 36rpx;
+            color: #898989;
+          }
+        }
+        .follow-btn, .unfollow-btn {
+          // width: 100rpx;
+          button{
+            background: white;
+            font-size: 32rpx;
+            padding: 5rpx 10rpx;
+            line-height: 1.5;
+          }
+        }
+        .follow-btn button{
+          color: green;
+        }
+      }
+    }
+    .sex-icon {
+      height: 40rpx;
+      width: 40rpx;
+      margin-top: -4rpx;
+    }
+    .sex-age{
+      position: relative;
+      height: 32rpx;
+      line-height: 32rpx;
+      border-radius: 10rpx;
+      display: flex;
+      padding-right: 20rpx;
+      margin-top: 8rpx;
+      &.feman {
+        border: 1px solid @femanred-color;
+        color: @femanred-color;
+        .triangle {
+          border-color: transparent @femanred-color transparent transparent; 
+        }
+      }
+      &.man {
+        color: @manblue-color;
+        border: 1px solid @manblue-color;
+      }
+    }
+    .triangle{
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 10rpx 10rpx 10rpx 0;
+      border-style: solid;
+      border-color: transparent @manblue-color transparent transparent;
+      left: -10rpx;
+      position: absolute;
+      top: 50%;
+      margin-top: -10rpx;
+    }
+    .today-tests{
+      margin-top: 10rpx;
+      margin-bottom: 10rpx;
     }
   }
 </style>
 <template>
   <view class="record-list">
     <view class="record-avatar">
-      <image src="{{item.photo}}" mode="aspectFill" />
+      <image src="{{ record.photo }}" mode="aspectFill" />
     </view>
     <view class="record-detail">
-      <view class="record-userinfo">fdsf</view>
-      <view class="record-disease-list"></view>
-      <view class="record-text"></view>
-      <view class="record-tool"></view>
+      
+      <!-- <RecordUserInfo :item.sync="{{ item }}"> </RecordUserInfo> -->
+      <RecordUserInfo uItem="{{ record }}" />   
+      <view class="today-tests">
+        <repeat for="{{ record.data }}" item="tItem" index="index" key="type">
+          <RecordTodayTest :testItem="tItem" :index="index" />
+        </repeat>
+      </view>
+      <RecordText :text="text" />
+      <RecordTool/>
       <view class="record-hug"></view>
       <view class="record-comments"></view>
     </view>
@@ -26,13 +118,46 @@
 </template>
 <script>
   import wepy from 'wepy'
+  import RecordUserInfo from './record_userinfo'
+  import RecordTodayTest from '../components/record_today_test'
+  import RecordText from '../components/record_text'
+  import RecordTool from '../components/record_tool'
+
   export default class RecordList extends wepy.component {
     props = {
-      item: {}
+      record: {}
+    }
+
+    components = {
+      RecordUserInfo: RecordUserInfo,
+      RecordTodayTest: RecordTodayTest,
+      RecordText: RecordText,
+      RecordTool: RecordTool
     }
 
     data = {
-      show: false
+      show: false,
+      hello: Math.random()
+    }
+
+    computed = {
+      userinfo () {
+        if (this.record) {
+          return {
+            nickname: this.record.nickname,
+            age: this.record.age,
+            sex: this.record.sex,
+            disease: this.record.disease,
+            follow: this.record.follow
+          }
+        }
+      },
+      text () {
+        return {
+          value: this.record.text,
+          recordid: this.record.recordid
+        }
+      }
     }
 
     methods = {
@@ -46,9 +171,8 @@
       },
       nothing () {}
     }
+
     onLoad () {
-      console.log(this)
-      console.log('____________________')
     }
   }
 </script>

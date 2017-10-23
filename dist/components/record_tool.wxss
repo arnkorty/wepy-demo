@@ -1,0 +1,1 @@
+.record-tool{font-size:32rpx;display:flex}.record-tool .tool-text{flex:1;display:flex;color:#aaa}.record-tool .tool-text view{margin-right:40rpx}.record-tool .tool-text .delete{color:#00AEFF}.record-tool .comment-icon{height:30rpx;width:30rpx}

@@ -1,0 +1,57 @@
+<style lang="less">
+</style>
+
+<template>
+   <view class="record-userinfo">
+        <view class="info">
+          <view>
+          <view class="name">
+            {{ uItem }}
+          </view>
+            <block wx:if="{{ uItem.sex == 1 }}">
+               <view class="sex-age man">
+                 <view class="triangle"></view>
+              <image class="sex-icon" src="/images/man.png" />
+            <view class="age">{{ uItem.age }}</view>
+          </view>
+            </block>
+            <block wx:else>
+               <view class="sex-age feman">
+                 <view class="triangle"></view>
+              <image class="sex-icon" src="/images/feman.png" />
+            <view class="age">{{ uItem.age }}</view>
+          </view>
+            </block>
+            </view>
+          <view class="disease">
+            {{ uItem.disease }} 
+          </view>
+        </view>
+        <view class="follow-btn" wx:if="{{ uItem.follow }}">
+          <button>
+            +关注
+          </button>
+        </view>
+        <view class="unfollow-btn" wx:else>
+          <button>
+            已关注
+          </button>
+        </view>
+      </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecordUserInfo extends wepy.component {
+    props = {
+      uItem: {}
+    }
+
+    data = {}
+
+    onLoad () {
+      console.log('userinfo item')
+      console.log(this.item)
+    }
+  }
+</script>

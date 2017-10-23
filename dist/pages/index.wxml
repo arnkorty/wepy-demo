@@ -6,12 +6,12 @@
 
       <view class="userinfo">
         
-  <view class="filter _fdf05fa">
-    <image src="/images/filter.png" mode="aspectFill" bindtap="$Filter$toggleShow" class="_fdf05fa"/>
+  <view class="filter _2a48a2f">
+    <image src="/images/filter.png" mode="aspectFill" bindtap="$Filter$toggleShow" class="_2a48a2f"/>
 
-    <view class="filter-selector {{ $Filter$show ? '' : 'hidden' }} _fdf05fa" catchtap="$Filter$toggleShow">
-      <view class="filter-lists _fdf05fa" catchtap="$Filter$nothing">
-        <label  wx:for="{{ $Filter$items }}" wx:key="{{ item.id }}" catchtap="$Filter$handleFilter" class="_fdf05fa" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
+    <view class="filter-selector {{ $Filter$show ? '' : 'hidden' }} _2a48a2f" catchtap="$Filter$toggleShow">
+      <view class="filter-lists _2a48a2f" catchtap="$Filter$nothing">
+        <label  wx:for="{{ $Filter$items }}" wx:key="{{ item.id }}" catchtap="$Filter$handleFilter" class="_2a48a2f" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
       </view>
     </view>
   </view>
@@ -24,17 +24,89 @@
 
     <!-- 记录列表 -->
     <view class="record-lists">
-      <block wx:for="{{ list }}" wx:for-index="index" wx:for-item="item" wx:key="recordid">
+      <block wx:for="{{ list }}" wx:for-index="index" wx:for-item="litem" wx:key="recordid">
         
   <view class="record-list">
     <view class="record-avatar">
-      <image src="{{item.photo}}" mode="aspectFill"/>
+      <image src="{{ litem.photo }}" mode="aspectFill"/>
     </view>
     <view class="record-detail">
-      <view class="record-userinfo">fdsf</view>
-      <view class="record-disease-list"/>
-      <view class="record-text"/>
-      <view class="record-tool"/>
+      
+      <!-- <RecordUserInfo v-bind:item.sync="{{ item }}"> </RecordUserInfo> -->
+      
+   <view class="record-userinfo">
+        <view class="info">
+          <view>
+          <view class="name">
+            {{ $RecordList$RecordUserInfo$uItem }}
+          </view>
+            <block  wx:if="{{ $RecordList$RecordUserInfo$uItem.sex == 1 }}">
+               <view class="sex-age man">
+                 <view class="triangle"/>
+              <image class="sex-icon" src="/images/man.png"/>
+            <view class="age">{{ $RecordList$RecordUserInfo$uItem.age }}</view>
+          </view>
+            </block>
+            <block  wx:else>
+               <view class="sex-age feman">
+                 <view class="triangle"/>
+              <image class="sex-icon" src="/images/feman.png"/>
+            <view class="age">{{ $RecordList$RecordUserInfo$uItem.age }}</view>
+          </view>
+            </block>
+            </view>
+          <view class="disease">
+            {{ $RecordList$RecordUserInfo$uItem.disease }} 
+          </view>
+        </view>
+        <view class="follow-btn" wx:if="{{ $RecordList$RecordUserInfo$uItem.follow }}">
+          <button>
+            +关注
+          </button>
+        </view>
+        <view class="unfollow-btn" wx:else>
+          <button>
+            已关注
+          </button>
+        </view>
+      </view>
+   
+      <view class="today-tests">
+        <block wx:for="{{ litem.data }}" wx:for-index="$RecordList$index" wx:for-item="$RecordList$tItem" wx:key="$RecordList$type">
+          
+  <view class="record-today-test-list">
+
+    <block  wx:if="{{ $RecordList$RecordTodayTest$indext === 0 }}">今日</block>{{ $RecordList$RecordTodayTest$type_name }}
+
+    <view class="test-value test-{{ $RecordList$RecordTodayTest$level_name }}">{{ $RecordList$tItem.value.value }}</view>
+
+    <view class="unit-name">{{ $RecordList$RecordTodayTest$unit_name }}</view>
+  </view>
+
+        </block>
+      </view>
+      
+  <view class="record-text">
+    <view class="record-text-view">
+      {{ $RecordList$RecordText$short_text }}
+    </view>
+    <view class="record-text-full">
+      查看全文
+    </view>
+  </view>
+
+      
+  <view class="record-tool">
+    <view class="tool-text">
+      <view class="timeago"> {{ $RecordList$RecordTool$timeago }} </view>
+      <view class="location"> {{ $RecordList$RecordTool$location }} </view>
+      <view  wx:if="can_delete" class="delete">删除</view>
+    </view>
+    <view class="tool-btn">
+      <image src="/images/comment.png" class="comment-icon"/>
+    </view>
+  </view>
+
       <view class="record-hug"/>
       <view class="record-comments"/>
     </view>

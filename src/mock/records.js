@@ -14,6 +14,8 @@ export default function () {
         return {
           recordid: Random.id(),
           usreid: Random.id(),
+          age: Random.integer(8, 80),
+          'sex': Random.integer(1, 2),
           nickname: Random.cname(),
           ...Mock.mock({'gender|1': ['1', '2']}),
           'birthday': Random.date(),

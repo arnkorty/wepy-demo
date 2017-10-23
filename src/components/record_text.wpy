@@ -1,0 +1,46 @@
+<style lang="less">
+    @manblue-color: #00AEFF;
+  .record-text-full{
+    color: @manblue-color;
+    margin-top: 10rpx;
+  }
+  .record-text-view {
+    overflow: hidden;
+    display: box;
+    line-clamp: 3;
+    box-orient: vertical;
+    text-overflow: ellipsis;
+    margin-top: 20rpx 0;
+  }
+  .record-text {
+    font-size: 34rpx;
+  }
+</style>
+
+<template>
+  <view class="record-text">
+    <view class="record-text-view">
+      {{ short_text }}
+    </view>
+    <view class="record-text-full">
+      查看全文
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecordText extends wepy.component {
+    props = {
+      text: {}
+    }
+
+    data = {}
+
+    computed = {
+      short_text () {
+        return this.text.value.substr(0, 40) + '...'
+      }
+    }
+  }
+</script>

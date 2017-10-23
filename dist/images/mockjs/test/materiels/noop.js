@@ -1,4 +1,0 @@
-"use strict";
-
-(function noop() {})();
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vb3AuanMiXSwibmFtZXMiOlsibm9vcCJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxDQUFDLFNBQVNBLElBQVQsR0FBZ0IsQ0FBRSxDQUFuQiIsImZpbGUiOiJub29wLmpzIiwic291cmNlc0NvbnRlbnQiOlsiKGZ1bmN0aW9uIG5vb3AoKSB7fSkoKTsiXX0=

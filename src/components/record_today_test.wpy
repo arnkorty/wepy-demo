@@ -1,0 +1,93 @@
+<style lang="less">
+  .record-today-test-list{
+    font-size: 28rpx;
+    display: flex;
+    margin-right: 30rpx;
+    .test-normal{
+      color: green;
+    }
+    .test-low {
+      color: darkcyan;
+    }
+    .test-slight {
+      color: #da7373;
+    }
+    .test-moderate{
+      color: #e04646;
+    }
+    .test-serere{
+      color: red;
+    }
+    .test-value{
+      margin-left: 20rpx;
+    }
+    .unit-name{
+      margin-right: 10rpx;
+    }
+  }
+  .today-tests{
+    display: flex;
+    background: #dcdcdc;
+    padding: 10rpx;
+    border-radius: 8rpx;
+  }
+</style>
+
+<template>
+  <view class="record-today-test-list">
+
+    <block wx:if="{{ indext === 0 }}">今日</block>{{ type_name }}
+
+    <view class="test-value test-{{ level_name }}">{{ testItem.value.value }}</view>
+
+    <view class="unit-name">{{ unit_name }}</view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  const types = {
+    blood: '血压',
+    sugar: '血糖',
+    weight: '体重'
+  }
+  const units = {
+    blood: 'mmHg',
+    sugar: '单位'
+  }
+  export default class RecordTodayTest extends wepy.component {
+    props = {
+      testItem: {},
+      indext: {
+        default: 0,
+        type: 'Integer'
+      }
+    }
+
+    data = {}
+
+    computed = {
+      type_name () {
+        return types[this.testItem.type]
+      },
+      level_name () {
+        let lname = 'normal'
+        for (let k in this.testItem.value.range) {
+          let v = this.testItem.value.range[k]
+          if (v[0] <= this.testItem.value.value && v[1] >= this.testItem.value.value) {
+            return k
+          }
+        }
+        return lname
+      },
+      unit_name () {
+        return units[this.testItem.type]
+      }
+    }
+
+    onLoad () {
+      console.log('userinfo item')
+      console.log(this.tItem)
+    }
+  }
+</script>
