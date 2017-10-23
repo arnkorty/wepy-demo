@@ -1,0 +1,21 @@
+@banner-height: 480rpx;
+@banner-avatar-size: 180rpx;
+.banner{
+  height: @banner-height;
+  .banner-image{
+    height: @banner-height;
+  }
+  .userinfo-avatar{
+    height: @banner-avatar-size;
+    width: @banner-avatar-size;
+    vertical-align: bottom;
+  }
+  position: relative;
+  .userinfo{
+    position: absolute;
+    bottom: -70rpx;
+    right: 30rpx;
+    display: flex;
+    
+  }
+}

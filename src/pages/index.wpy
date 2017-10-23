@@ -1,0 +1,74 @@
+<style lang="less" src="./index.less"></style>
+  
+<template>
+  <view class="container">
+    <!-- banner -->
+    <view class="banner">
+      <image class="banner-image" src="{{ bg_image_url }}" mode="aspectFill" />
+
+      <view class="userinfo">
+        <filter @filter.user="filter" :items="filters"/>
+        <image class="userinfo-avatar" src="{{ avatar_url }}" mode="aspectFill" />
+      </view>
+    </view>
+
+    <!-- 新消息 -->
+    <view class="new-msgs" wx:if="{{ msg_count > 0 }}"></view>
+
+    <!-- 记录列表 -->
+    <view class="record-lists">
+      
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  import Filter from '../components/filter'
+
+  import { connect, mapState } from 'wepy-redux'
+  import { FETCH_RECORDS, FILTER_RECORDS } from '../store/types'
+  @connect(mapState({
+    list: (state) => state.records.list,
+    photo: (state) => state.records.photo,
+    bg_image_url: (state) => state.records.bg_image,
+    avatar_url: (state) => state.records.avatar,
+    msg_count: (state) => state.records.msg_count,
+    filters: (state) => state.records.filters
+  }), {
+    fetch: FETCH_RECORDS,
+    filter: FILTER_RECORDS
+  })
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '动态列表'
+    }
+    components = {
+      filter: Filter
+    }
+
+    mixins = []
+
+    data = {
+    }
+
+    computed = {
+      now () {
+        return +new Date()
+      }
+    }
+
+    methods = {
+    }
+
+    events = {
+    }
+
+    onLoad() {
+      this.methods.fetch({type: 'fidsiof'})
+      console.log(this)
+    }
+  }
+</script>

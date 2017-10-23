@@ -1,0 +1,77 @@
+<style lang="less" scoped>
+  .filter{
+      // height: 40rpx;
+      margin-top: 130rpx;
+      margin-right: 20rpx;
+      image{
+        height: 50rpx;
+        width: 50rpx;
+      }
+      .filter-selector {
+        &.hidden{
+          display: none;
+        }
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        // text-align: center;
+        // al
+        flex-direction: column;
+        .filter-lists {
+          label {
+            display: block;
+            padding: 10rpx;
+            border-bottom: 1px solid #aaa;
+            margin: 10rpx;
+          }
+          padding: 20rpx;
+          background: #ccc;
+        }
+      }
+    }
+</style>
+
+<template>
+  <view class="filter">
+    <image src="/images/filter.png" mode="aspectFill" @tap="toggleShow" />
+
+    <view class="filter-selector {{ show ? '' : 'hidden' }}" @tap.stop="toggleShow">
+      <view class="filter-lists" @tap.stop="nothing">
+        <label wx:for="{{ items }}" wx:key="{{ item.id }}" @tap.stop="handleFilter({{ item.id }})"> {{ item.name }} </label>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Filter extends wepy.component {
+    props = {
+      items: {}
+    }
+
+    data = {
+      show: false
+    }
+
+    methods = {
+      toggleShow (e) {
+        console.log(e)
+        this.show = !this.show
+        console.log(this.show)
+      },
+      handleFilter (id) {
+        console.log(id)
+      },
+      nothing () {}
+    }
+    onLoad () {
+      console.log(this)
+      console.log('____________________')
+    }
+  }
+</script>

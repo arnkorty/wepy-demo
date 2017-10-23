@@ -1,0 +1,2 @@
+@import "./../components/filter.wxss";
+.banner{height:480rpx;position:relative}.banner .banner-image{height:480rpx}.banner .userinfo-avatar{height:180rpx;width:180rpx;vertical-align:bottom}.banner .userinfo{position:absolute;bottom:-70rpx;right:30rpx;display:flex}

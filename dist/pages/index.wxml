@@ -1,0 +1,29 @@
+
+  <view class="container">
+    <!-- banner -->
+    <view class="banner">
+      <image class="banner-image" src="{{ bg_image_url }}" mode="aspectFill"/>
+
+      <view class="userinfo">
+        
+  <view class="filter _2a48a2f">
+    <image src="/images/filter.png" mode="aspectFill" bindtap="$filter$toggleShow" class="_2a48a2f"/>
+
+    <view class="filter-selector {{ $filter$show ? '' : 'hidden' }} _2a48a2f" catchtap="$filter$toggleShow">
+      <view class="filter-lists _2a48a2f" catchtap="$filter$nothing">
+        <label  wx:for="{{ $filter$items }}" wx:key="{{ item.id }}" catchtap="$filter$handleFilter" class="_2a48a2f" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
+      </view>
+    </view>
+  </view>
+        <image class="userinfo-avatar" src="{{ avatar_url }}" mode="aspectFill"/>
+      </view>
+    </view>
+
+    <!-- 新消息 -->
+    <view class="new-msgs"  wx:if="{{ msg_count > 0 }}"/>
+
+    <!-- 记录列表 -->
+    <view class="record-lists">
+      
+    </view>
+  </view>
