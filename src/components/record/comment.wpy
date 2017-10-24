@@ -1,0 +1,28 @@
+<template>
+  <view class="record-comment">
+
+    <view class="record-comment-user">{{ comment.nickname }}:</view>
+    <view class="record-comment-text" @tap="showText">{{ comment.text }}</view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecordComment extends wepy.component {
+    props = {
+      comment: {}
+    }
+
+    data = {}
+
+    methods = {
+      showText () {
+        console.log(this.comment)
+      }
+    }
+
+    // 待完成
+    computed = {
+    }
+  }
+</script>

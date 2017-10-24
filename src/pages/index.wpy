@@ -7,7 +7,10 @@
       <image class="banner-image" src="{{ bg_image_url }}" mode="aspectFill" />
 
       <view class="userinfo">
-        <Filter @filter.user="filter" :items="filters"></Filter>
+        <Filter :items="filters">
+          <image src="/images/filter.png" mode="aspectFill" @tap="toggleShow" />
+        </Filter>
+
         <image class="userinfo-avatar" src="{{ avatar_url }}" mode="aspectFill" />
       </view>
     </view>
@@ -28,13 +31,12 @@
   import wepy from 'wepy'
 
   import Filter from '../components/filter'
-  import RecordList from '../components/record_list'
+  import RecordList from '../components/record/list'
 
   import { connect, mapState } from 'wepy-redux'
   import { FETCH_RECORDS, FILTER_RECORDS } from '../store/types'
 
   import { records } from '../mock/index'
-  console.log(records)
 
   // const record = getRecord()
 
@@ -76,10 +78,17 @@
     }
 
     events = {
+      deleteRecord (recordid) {
+        // console.log(this.list)
+        this.list = this.list.filter((r) => r.recordid !== recordid)
+      },
+      filter (id) {
+        console.log('执行过滤' + id)
+      }
     }
 
     onLoad() {
-      this.methods.fetch({type: 'fidsiof'})
+      this.methods.fetch({type: 'test redux'})
       console.log('get wepy index list')
       console.log(this.data.list)
     }

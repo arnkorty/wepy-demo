@@ -42,6 +42,9 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
+    // console.log(store)
+    // store.dispatch('FETCH_RECORDS')
+    console.log('fetch records .....')
     this.testAsync()
   }
 

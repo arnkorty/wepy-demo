@@ -1,0 +1,176 @@
+<style lang="less" src="../../styles/record_list.less">
+</style>
+<template>
+  <view class="record-list">
+    <!-- 左边头像 -->
+    <view class="record-avatar">
+      <image src="{{ record.photo }}" mode="aspectFill" />
+    </view>
+    <!-- 右边信息 -->
+    <view class="record-detail">
+      <!-- 用户信息 -->
+      <view class="record-userinfo">
+        <view class="info">
+          <view>
+          <view class="name">
+            {{ record.nickname }}
+          </view>
+            <block wx:if="{{ record.sex == 1 }}">
+               <view class="sex-age man">
+                 <view class="triangle"></view>
+              <image class="sex-icon" src="/images/man.png" />
+            <view class="age">{{ record.age }}</view>
+          </view>
+            </block>
+            <block wx:else>
+               <view class="sex-age feman">
+                 <view class="triangle"></view>
+              <image class="sex-icon" src="/images/feman.png" />
+            <view class="age">{{ record.age }}</view>
+          </view>
+            </block>
+            </view>
+          <view class="disease">
+            {{ record.disease }} 
+          </view>
+        </view>
+        <view class="follow-btn" wx:if="{{ record.follow }}">
+          <button>
+            +关注
+          </button>
+        </view>
+        <view class="unfollow-btn" wx:else>
+          <button>
+            已关注
+          </button>
+        </view>
+      </view>
+
+      <!-- 今日测量 -->
+      <view class="today-tests" wx:if="{{record.data}}">
+        <repeat for="{{record.data}}" item="tItem">
+          <RecordTodayTest :testItem="tItem" :indext="index" /> 
+        </repeat>
+      </view>
+
+      <!-- <RecordText :text="text" /> -->
+      <!-- 测量文字 -->
+      <view class="record-text">
+        <view class="record-text-view">
+          {{ short_text }}
+        </view>
+        <view class="record-text-full">
+          查看全文
+        </view>
+      </view>
+
+      <!-- 时间，地址，操作 -->
+      <view class="record-tool">
+          <view class='tool-text'>
+            <view class="timeago"> {{ record.timeago }} </view>
+            <view class="location"> {{ record.location }} </view>
+            <view wx:if="can_delete" class="delete" @tap="delete({{record.recordid}})">删除</view>
+          </view>
+          <view class="tool-btn">
+            <image src="/images/comment0.png" class="comment-icon"/>
+          </view>
+      </view>
+
+      <!-- 评论区域 -->
+      <view class="record-ch">
+        <!-- 赞 -->
+        <view class="record-hugs">
+          <view class="record-hug-icon">
+            <image src="/images/liked.png" mode="aspectFill"></image>
+          </view>
+          <view class="lists">
+          <repeat for="{{ record.hug }}" item="hugitem">
+            <RecordHug :hug="hugitem"></RecordHug>
+          </repeat>
+          </view>
+        </view>
+        <!-- 评论 -->
+        <view class="record-comments">
+          <view class="record-comment-icon">
+            <image src="/images/comment0.png" mode="aspectFill"></image>
+          </view>
+          <view class="lists">
+            <repeat for="{{ record.comment }}" item="comment">
+              <RecordComment :comment="comment"></RecordComment>
+            </repeat>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  // import RecordUserInfo from './record_userinfo'
+  import RecordTodayTest from './today_test'
+  // import RecordText from '../components/record_text'
+  import RecordTool from './tool'
+  import RecordComment from './comment'
+  import RecordHug from './hug'
+
+  export default class RecordList extends wepy.component {
+    props = {
+      record: {}
+    }
+
+    components = {
+      // RecordUserInfo: RecordUserInfo,
+      RecordTodayTest: RecordTodayTest,
+      // RecordText: RecordText,
+      RecordTool: RecordTool,
+      RecordHug: RecordHug,
+      RecordComment: RecordComment
+    }
+
+    data = {
+      show: false,
+      hello: Math.random()
+    }
+
+    computed = {
+      userinfo () {
+        if (this.record) {
+          return {
+            nickname: this.record.nickname,
+            age: this.record.age,
+            sex: this.record.sex,
+            disease: this.record.disease,
+            follow: this.record.follow
+          }
+        }
+      },
+      short_text () {
+        if (this.record) {
+          return this.record.text.substr(0, 30) + '...'
+        }
+      }
+    }
+
+    methods = {
+      toggleShow (e) {
+        console.log(e)
+        this.show = !this.show
+        console.log(this.show)
+      },
+      handleFilter (id) {
+        console.log(id)
+      },
+      nothing () {},
+      delete (recordid) {
+        console.log(recordid)
+        this.$emit('deleteRecord', recordid)
+      }
+    }
+
+    events = {
+    }
+
+    onLoad () {
+    }
+  }
+</script>

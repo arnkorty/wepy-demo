@@ -4,6 +4,7 @@
     .record-tool{
       font-size: 32rpx;
       display: flex;
+      margin-bottom: 15rpx;
       .tool-text{
         flex: 1;
         display: flex;
@@ -16,8 +17,8 @@
         }
       }
       .comment-icon{
-        height: 30rpx;
-        width: 30rpx;
+        height: 38rpx;
+        width: 38rpx;
       }
     }
 </style>
@@ -27,10 +28,10 @@
     <view class='tool-text'>
       <view class="timeago"> {{ timeago }} </view>
       <view class="location"> {{ location }} </view>
-      <view wx:if="can_delete" class="delete">删除</view>
+      <view wx:if="can_delete" class="delete" @tap="delete">删除</view>
     </view>
     <view class="tool-btn">
-      <image src="/images/comment.png" class="comment-icon"/>
+      <image src="/images/comment0.png" class="comment-icon"/>
     </view>
   </view>
 </template>
@@ -42,6 +43,14 @@
     }
 
     data = {}
+
+    methods = {
+      delete () {
+        console.log('emit deleteRecord')
+        console.log(this)
+        this.$emit('log')
+      }
+    }
 
     // 待完成
     computed = {

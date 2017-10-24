@@ -1,0 +1,211 @@
+  @record-avatar-size: 100rpx;
+  @manblue-color: #00AEFF;
+  @femanred-color: #EA6F91;
+  @light-color: #aaa;
+  .record-list {
+    display: flex;
+    padding: 30rpx;
+    .record-avatar {
+      width: @record-avatar-size;
+      image {
+        height: @record-avatar-size;
+        width: @record-avatar-size;
+      }
+    }
+    .record-detail {
+      flex: 1;
+      display: flex;
+      padding-left: 18rpx;
+      flex-direction: column;
+      .record-userinfo {
+        display: flex;
+        flex: 1;
+        margin-bottom: 10rpx;
+        .info {
+          flex: 1;
+          &>view {
+            display: flex
+          }
+          .name {
+            margin-right: 30rpx;
+            color: @manblue-color;
+          }
+          .age {
+            font-size: 28rpx;
+          }
+          .disease {
+            font-size: 36rpx;
+            color: #898989;
+          }
+        }
+        .follow-btn,
+        .unfollow-btn {
+          // width: 100rpx;
+          button {
+            background: white;
+            font-size: 32rpx;
+            padding: 5rpx 10rpx;
+            line-height: 1.5;
+          }
+        }
+        .follow-btn button {
+          color: green;
+        }
+      }
+    }
+    .sex-icon {
+      height: 40rpx;
+      width: 40rpx;
+      margin-top: -4rpx;
+    }
+    .sex-age {
+      position: relative;
+      height: 32rpx;
+      line-height: 32rpx;
+      border-radius: 10rpx;
+      display: flex;
+      padding-right: 20rpx;
+      margin-top: 8rpx;
+      &.feman {
+        border: 1px solid @femanred-color;
+        color: @femanred-color;
+        .triangle {
+          border-color: transparent @femanred-color transparent transparent;
+        }
+      }
+      &.man {
+        color: @manblue-color;
+        border: 1px solid @manblue-color;
+      }
+    }
+    .triangle {
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 10rpx 10rpx 10rpx 0;
+      border-style: solid;
+      border-color: transparent @manblue-color transparent transparent;
+      left: -10rpx;
+      position: absolute;
+      top: 50%;
+      margin-top: -10rpx;
+    }
+    .today-tests {
+      margin-top: 10rpx;
+      margin-bottom: 10rpx;
+    }
+    .record-text-full {
+      color: @manblue-color;
+      margin-top: 10rpx;
+    }
+    .record-text-view {
+      overflow: hidden;
+      display: box;
+      line-clamp: 3;
+      box-orient: vertical;
+      text-overflow: ellipsis;
+      margin-top: 20rpx 0;
+    }
+    .record-text {
+      font-size: 34rpx;
+    }
+    .record-tool {
+      font-size: 32rpx;
+      display: flex;
+      .tool-text {
+        flex: 1;
+        display: flex;
+        color: @light-color;
+        view {
+          margin-right: 40rpx;
+        }
+        .delete {
+          color: @manblue-color;
+        }
+      }
+      .comment-icon {
+        height: 30rpx;
+        width: 30rpx;
+      }
+    }
+    .record-comments,
+    .record-hugs {
+      display: flex;
+      .lists {
+        flex: 1;
+      }
+    }
+    .record-hugs {
+      border-bottom: 1px solid #bbb;
+      padding: 10rpx;
+      margin-bottom: 15rpx;
+    }
+    .record-comments .record-comment-icon,
+    .record-hugs .record-hug-icon {
+      width: 40rpx;
+      height: 40rpx;
+      margin-right: 20rpx;
+      image {
+        // margin-top: 20rpx;
+        width: 40rpx;
+        height: 40rpx;
+      }
+    }
+    .record-hug {
+      margin-left: 10rpx;
+      margin-bottom: 10rpx;
+    }
+    .hug-name {
+      float: left;
+      font-size: 28rpx;
+      color: @manblue-color;
+      margin-right: 15rpx;
+    }
+    .record-comment {
+      display: flex;
+      color: #888;
+      font-size: 32rpx;
+      padding: 5rpx 0;
+      .record-comment-text {
+        flex: 1
+      }
+      .record-comment-user {
+        margin-right: 18rpx;
+      }
+    }
+    .record-tool {
+      font-size: 32rpx;
+      display: flex;
+      margin-bottom: 15rpx;
+      .tool-text {
+        flex: 1;
+        display: flex;
+        color: @light-color;
+        view {
+          margin-right: 40rpx;
+        }
+        .delete {
+          color: @manblue-color;
+        }
+      }
+      .comment-icon {
+        height: 38rpx;
+        width: 38rpx;
+      }
+    }
+    .record-text-full {
+      color: @manblue-color;
+      margin-top: 10rpx;
+    }
+    .record-text-view {
+      overflow: hidden;
+      display: box;
+      line-clamp: 3;
+      box-orient: vertical;
+      text-overflow: ellipsis;
+      margin-top: 20rpx 0;
+    }
+    .record-text {
+      font-size: 34rpx;
+    }
+  }

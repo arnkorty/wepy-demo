@@ -1,20 +1,6 @@
 <style lang="less">
     @manblue-color: #00AEFF;
-  .record-text-full{
-    color: @manblue-color;
-    margin-top: 10rpx;
-  }
-  .record-text-view {
-    overflow: hidden;
-    display: box;
-    line-clamp: 3;
-    box-orient: vertical;
-    text-overflow: ellipsis;
-    margin-top: 20rpx 0;
-  }
-  .record-text {
-    font-size: 34rpx;
-  }
+
 </style>
 
 <template>

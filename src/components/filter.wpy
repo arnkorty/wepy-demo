@@ -1,6 +1,5 @@
-<style lang="less" scoped>
+<style lang="less">
   .filter{
-      // height: 40rpx;
       margin-top: 130rpx;
       margin-right: 20rpx;
       image{
@@ -19,8 +18,7 @@
         display: flex;
         justify-content:center;
         align-items: center;
-        // text-align: center;
-        // al
+        z-index: 100;
         flex-direction: column;
         .filter-lists {
           label {
@@ -38,7 +36,11 @@
 
 <template>
   <view class="filter">
-    <image src="/images/filter.png" mode="aspectFill" @tap="toggleShow" />
+    <view @tap="toggleShow">
+      <slot>
+        <!-- <image src="/images/filter.png" mode="aspectFill" @tap="toggleShow" /> -->
+      </slot>
+    </view>
 
     <view class="filter-selector {{ show ? '' : 'hidden' }}" @tap.stop="toggleShow">
       <view class="filter-lists" @tap.stop="nothing">
@@ -66,6 +68,7 @@
       },
       handleFilter (id) {
         console.log(id)
+        this.$emit('filter', id)
       },
       nothing () {}
     }

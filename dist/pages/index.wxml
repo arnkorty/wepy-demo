@@ -6,15 +6,21 @@
 
       <view class="userinfo">
         
-  <view class="filter _2a48a2f">
-    <image src="/images/filter.png" mode="aspectFill" bindtap="$Filter$toggleShow" class="_2a48a2f"/>
+  <view class="filter">
+    <view bindtap="$Filter$toggleShow">
+      
+          <image src="/images/filter.png" mode="aspectFill" bindtap="toggleShow"/>
+        
+    </view>
 
-    <view class="filter-selector {{ $Filter$show ? '' : 'hidden' }} _2a48a2f" catchtap="$Filter$toggleShow">
-      <view class="filter-lists _2a48a2f" catchtap="$Filter$nothing">
-        <label  wx:for="{{ $Filter$items }}" wx:key="{{ item.id }}" catchtap="$Filter$handleFilter" class="_2a48a2f" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
+    <view class="filter-selector {{ $Filter$show ? '' : 'hidden' }}" catchtap="$Filter$toggleShow">
+      <view class="filter-lists" catchtap="$Filter$nothing">
+        <label  wx:for="{{ $Filter$items }}" wx:key="{{ item.id }}" catchtap="$Filter$handleFilter" data-wepy-params-a="{{ item.id }}"> {{ item.name }} </label>
       </view>
     </view>
   </view>
+
+
         <image class="userinfo-avatar" src="{{ avatar_url }}" mode="aspectFill"/>
       </view>
     </view>
@@ -27,39 +33,39 @@
       <block wx:for="{{ list }}" wx:for-index="index" wx:for-item="litem" wx:key="recordid">
         
   <view class="record-list">
+    <!-- 左边头像 -->
     <view class="record-avatar">
       <image src="{{ litem.photo }}" mode="aspectFill"/>
     </view>
+    <!-- 右边信息 -->
     <view class="record-detail">
-      
-      <!-- <RecordUserInfo v-bind:item.sync="{{ item }}"> </RecordUserInfo> -->
-      
-   <view class="record-userinfo">
+      <!-- 用户信息 -->
+      <view class="record-userinfo">
         <view class="info">
           <view>
           <view class="name">
-            {{ $RecordList$RecordUserInfo$uItem }}
+            {{ litem.nickname }}
           </view>
-            <block  wx:if="{{ $RecordList$RecordUserInfo$uItem.sex == 1 }}">
+            <block  wx:if="{{ litem.sex == 1 }}">
                <view class="sex-age man">
                  <view class="triangle"/>
               <image class="sex-icon" src="/images/man.png"/>
-            <view class="age">{{ $RecordList$RecordUserInfo$uItem.age }}</view>
+            <view class="age">{{ litem.age }}</view>
           </view>
             </block>
             <block  wx:else>
                <view class="sex-age feman">
                  <view class="triangle"/>
               <image class="sex-icon" src="/images/feman.png"/>
-            <view class="age">{{ $RecordList$RecordUserInfo$uItem.age }}</view>
+            <view class="age">{{ litem.age }}</view>
           </view>
             </block>
             </view>
           <view class="disease">
-            {{ $RecordList$RecordUserInfo$uItem.disease }} 
+            {{ litem.disease }} 
           </view>
         </view>
-        <view class="follow-btn" wx:if="{{ $RecordList$RecordUserInfo$uItem.follow }}">
+        <view class="follow-btn" wx:if="{{ litem.follow }}">
           <button>
             +关注
           </button>
@@ -70,45 +76,81 @@
           </button>
         </view>
       </view>
-   
-      <view class="today-tests">
-        <block wx:for="{{ litem.data }}" wx:for-index="$RecordList$index" wx:for-item="$RecordList$tItem" wx:key="$RecordList$type">
+
+      <!-- 今日测量 -->
+      <view class="today-tests" wx:if="{{litem.data}}">
+        <block wx:for="{{litem.data}}" wx:for-index="$RecordList$index" wx:for-item="$RecordList$tItem" wx:key="$RecordList$key">
           
   <view class="record-today-test-list">
 
-    <block  wx:if="{{ $RecordList$RecordTodayTest$indext === 0 }}">今日</block>{{ $RecordList$RecordTodayTest$type_name }}
+    <block  wx:if="{{ $RecordList$index === 0 }}">今日</block>{{ $RecordList$RecordTodayTest$type_name }}
 
     <view class="test-value test-{{ $RecordList$RecordTodayTest$level_name }}">{{ $RecordList$tItem.value.value }}</view>
 
     <view class="unit-name">{{ $RecordList$RecordTodayTest$unit_name }}</view>
   </view>
-
+ 
         </block>
       </view>
-      
-  <view class="record-text">
-    <view class="record-text-view">
-      {{ $RecordList$RecordText$short_text }}
-    </view>
-    <view class="record-text-full">
-      查看全文
-    </view>
+
+      <!-- <RecordText v-bind:text.once="text" /> -->
+      <!-- 测量文字 -->
+      <view class="record-text">
+        <view class="record-text-view">
+          {{ $RecordList$short_text }}
+        </view>
+        <view class="record-text-full">
+          查看全文
+        </view>
+      </view>
+
+      <!-- 时间，地址，操作 -->
+      <view class="record-tool">
+          <view class="tool-text">
+            <view class="timeago"> {{ litem.timeago }} </view>
+            <view class="location"> {{ litem.location }} </view>
+            <view  wx:if="can_delete" class="delete" bindtap="$RecordList$delete" data-com-index="{{index}}" data-wepy-params-a="{{litem.recordid}}">删除</view>
+          </view>
+          <view class="tool-btn">
+            <image src="/images/comment0.png" class="comment-icon"/>
+          </view>
+      </view>
+
+      <!-- 评论区域 -->
+      <view class="record-ch">
+        <!-- 赞 -->
+        <view class="record-hugs">
+          <view class="record-hug-icon">
+            <image src="/images/liked.png" mode="aspectFill"/>
+          </view>
+          <view class="lists">
+          <block wx:for="{{ litem.hug }}" wx:for-index="$RecordList$index" wx:for-item="$RecordList$hugitem" wx:key="$RecordList$key">
+            
+  <!-- <image class="record-hug" mode="aspectFill" src="{{hug.photo}}" /> -->
+  <view class="hug-name"> {{ $RecordList$hugitem.nickname }} </view>
+  <!-- <view> {{ hug.photo }} </view> -->
+
+          </block>
+          </view>
+        </view>
+        <!-- 评论 -->
+        <view class="record-comments">
+          <view class="record-comment-icon">
+            <image src="/images/comment0.png" mode="aspectFill"/>
+          </view>
+          <view class="lists">
+            <block wx:for="{{ litem.comment }}" wx:for-index="$RecordList$index" wx:for-item="$RecordList$comment" wx:key="$RecordList$key">
+              
+  <view class="record-comment">
+
+    <view class="record-comment-user">{{ $RecordList$comment.nickname }}:</view>
+    <view class="record-comment-text" bindtap="$RecordList$RecordComment$showText" data-com-index="{{index}}-{{$RecordList$index}}">{{ $RecordList$comment.text }}</view>
   </view>
 
-      
-  <view class="record-tool">
-    <view class="tool-text">
-      <view class="timeago"> {{ $RecordList$RecordTool$timeago }} </view>
-      <view class="location"> {{ $RecordList$RecordTool$location }} </view>
-      <view  wx:if="can_delete" class="delete">删除</view>
-    </view>
-    <view class="tool-btn">
-      <image src="/images/comment.png" class="comment-icon"/>
-    </view>
-  </view>
-
-      <view class="record-hug"/>
-      <view class="record-comments"/>
+            </block>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 

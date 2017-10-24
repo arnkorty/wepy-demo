@@ -1,0 +1,20 @@
+<template>
+  <!-- <image class="record-hug" mode="aspectFill" src="{{hug.photo}}" /> -->
+  <view class="hug-name"> {{ hug.nickname }} </view>
+  <!-- <view> {{ hug.photo }} </view> -->
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class RecordHug extends wepy.component {
+    props = {
+      hug: {}
+    }
+
+    data = {}
+
+    // 待完成
+    computed = {
+    }
+  }
+</script>
